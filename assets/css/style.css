@@ -7,11 +7,21 @@ body {
 #section-background {
     background-image: url("../images/giant-wave.jpg");
     color: whitesmoke;
+    padding-bottom: 5%;
 }
 
 #game-info {
     font-size: 1rem;
+    padding-left: 10px;
+    padding-top: 2px;
 }
+
+#reset {
+    margin-left: 5px;
+    background-color: rgba(144, 198, 149, 1);
+    border: 1px solid red;
+}
+
 #game-board {
 	position:relative;
 	margin:0 auto 2em auto;
@@ -19,9 +29,11 @@ body {
 	height:500px;
 }
 
+
 #game-board div {
 	position:absolute;
-	border: 1px solid #ddd;
+	border: 1px solid red;
 	width:50px;
 	height:50px;
+    background-color: rgba(144, 198, 149, 0.5);
 }
