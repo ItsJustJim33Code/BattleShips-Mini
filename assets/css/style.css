@@ -16,8 +16,9 @@ body {
     padding-top: 2px;
 }
 
-#reset {
+button {
     margin-left: 5px;
+    margin-top: 5px;
     background-color: rgba(144, 198, 149, 1);
     border: 1px solid red;
 }

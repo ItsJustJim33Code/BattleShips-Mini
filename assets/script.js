@@ -27,8 +27,46 @@ for (i = 0; i < cols; i++) {
 	}
 }
 
-// Create a score system to show when youve won
+document.addEventListener("DOMContentLoaded", function() {
+	let buttons = document.getElementsByTagName("button");
+
+	for (let button of buttons) {
+		button.addEventListener("click", function() {
+			if (this.getAttribute("data-type") === "reset") {
+				resetGame();
+			} else {
+				let gameDifficulty = this.getAttribute("data-type");
+				selectDifficulty("gameDiffculty");
+			}
+		});
+        }
+            // Select Default Difficulty
+            selectDifficulty("easy");
+    })
+
+// Create a score system to show you game info
 var totalHits = "0"
+var torpedosLeft = "50"
+
+function selectDifficulty(gameDifficulty) {
+
+    let difficulty = document.getElementsByTagName('button')
+
+    if (gameDifficulty === "easy") {
+		document.getElementById('torpedos-left').innerText = "50"
+        //reset game here
+	} else if (gameDifficulty === "medium") {
+		document.getElementById('torpedos-left').innerText = "40"
+	} else if (gameDifficulty === "hard") {
+		document.getElementById('torpedos-left').innerText = "30"
+	} else if (gameDifficulty === "impossible") {
+        document.getElementById('torpedos-left').innerText = "20"
+    } else {
+		alert(`Unknown game type ${gameDifficulty}`);
+		throw `Unknown game type ${gameDifficulty}, aborting!`;
+	}
+
+}
 
 
 // add both of these to the actual game function to call these functions as the if statements are included in main game function

@@ -18,14 +18,21 @@
     <section id="section-background">
         <div id="game-info">
             <h3>17 Hits to Win The Game</h3>
-            <p>Torpedo Hits: <span id="ship-info"></span></p>
+            <p>Torpedo Hits: <span id="torpedos-hit">0</span></p>
+            <p>Torpedos Remaining: <span id="torpedos-left">50</span></p>
             <p>Games Win: <span id="games-won">0</span></p>
             <p>Games Lost: <span id="games-lost">0</span></p>
         </div>
         <div id="game-board">
 
         </div>
-        <button id="reset">Reset Game!</button>
+        <div id="game-difficulty">
+            <button data-type="easy" class="btn">Easy</button>
+            <button data-type="Medium" class="btn">Medium</button>
+            <button data-type="Hard" class="btn">Hard</button>
+            <button data-type="Impossible" class="btn">Impossible</button>
+        </div>
+        <button id="reset" data-type="reset">Reset Game!</button>
     </section>
     <script src="assets/script.js"></script>
 </body>
