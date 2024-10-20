@@ -1,0 +1,27 @@
+body {
+    margin: 60px auto;
+    width: 70%;
+    max-width: 950px;
+}
+
+#section-background {
+    background-image: url("../images/giant-wave.jpg");
+    color: whitesmoke;
+}
+
+#game-info {
+    font-size: 1rem;
+}
+#game-board {
+	position:relative;
+	margin:0 auto 2em auto;
+	width:500px;
+	height:500px;
+}
+
+#game-board div {
+	position:absolute;
+	border: 1px solid #ddd;
+	width:50px;
+	height:50px;
+}
