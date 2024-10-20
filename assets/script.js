@@ -14,7 +14,7 @@ for (i = 0; i < cols; i++) {
 		var square = document.createElement("div");
 		gameBoardContainer.appendChild(square);
 
-    // give each div element a unique id based on its row and column, like "s00"
+        // give each div element a unique id based on its row and column, like "s00"
 		square.id = 's' + j + i;			
 		
 		// set each grid square's coordinates: multiples of the current row or column number
@@ -30,12 +30,28 @@ for (i = 0; i < cols; i++) {
 // Create a score system to show when youve won
 var totalHits = "0"
 
+
+// add both of these to the actual game function to call these functions as the if statements are included in main game function
 function gamesWon() {
     if (totalHits = "17") {
-        alert('You have destroyed all battleships')
+        alert('You have destroyed all battleships, You WON!')
 	    let score = parseInt(document.getElementById("games-won").innerText);
-	    document.getElementById("games-won").innerText = ++score;
+
+	    gameWon = document.getElementById("games-won").style.color = Green
+        gameWon.innerText = ++score;
+        
     } 
+}
+
+// 
+function gameLost() {
+    if (clicks > 50) {
+        alert('You have launched all Torpedos, Game Over!')
+        let score = parseInt(document.getElementById("games-lost").innerText);
+
+	    gameLost = document.getElementById("games-lost").style.color = Red
+        gameLost.innerText = ++score;
+    }
 }
 
 /* Simple way to know if you have won, is to add up the total amount of hits to destroy all ships on the board
@@ -47,6 +63,8 @@ a certain ship type has been destroyed.)
       Submarine        - 3 hits
       Frigate          - 2 hits
 */
+
+// Static Gameboard layout * look at randomising this
 var gameBoard = [
 				[0,0,0,1,1,1,1,0,0,0],
 				[0,0,0,0,0,0,0,0,0,0],
