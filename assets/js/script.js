@@ -37,8 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				alert('You clicked the restart button')
 			} else {
 				let gameDifficulty = this.getAttribute("data-type");
-				alert(`this game is in ${gameDifficulty}`)
-				selectDifficulty("gameDifficulty");
+				selectDifficulty(gameDifficulty);
 			}
 		});
         }
@@ -65,7 +64,6 @@ function selectDifficulty(gameDifficulty) {
 			}
 		})
 	*/
-	alert(`gametype = ${gameDifficulty}`)
 
     if (gameDifficulty === "easy") {
 		document.getElementById('torpedos-left').innerText = "50"
