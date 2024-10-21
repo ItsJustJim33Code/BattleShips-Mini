@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		button.addEventListener("click", function() {
 			if (this.getAttribute("data-type") === "reset") {
 				//resetGame();
-				alert('You clicked the restart button')
+				//alert('You clicked the restart button')
 			} else {
 				let gameDifficulty = this.getAttribute("data-type");
 				selectDifficulty(gameDifficulty);
@@ -47,23 +47,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 // Create a score system to show you game info
-var totalHits = "0"
-var torpedosLeft = "50"
+var torpedosHit = "0"
+var torpedosLeft = document.getElementById('torpedos-left').innerText
+
+function IncrementScore() {
+
+	let torpedosHit = parseInt(document.getElementById("torpedos-hit").innerText);
+	document.getElementById("torpedos-hit").innerText = ++torpedosHit;
+
+	if (torpedosHit == 17) {
+		gamesWon()
+	}
+}
+
+function DecrementScore() {
+	let torpedosLeft = parseInt(document.getElementById("torpedos-left").innerText);
+	document.getElementById("torpedos-left").innerText = --torpedosLeft;
+
+	if (torpedosLeft == 0) {
+		gamesLost()
+	}
+}
 
 function selectDifficulty(gameDifficulty) {
-
-	/*let gameDiffButtons = document.getElementsByClassName('btn')
-
-	for (let button of gameDiffButtons) {
-		button.addEventListener("click", function() {
-			if (gameDifficulty === 'easy') {
-				//resetGame();
-				alert(`This game is in easy mode`);
-			} else {
-				let gameDifficulty = this.getAttribute("data-type");
-			}
-		})
-	*/
 
     if (gameDifficulty === "easy") {
 		document.getElementById('torpedos-left').innerText = "50"
@@ -85,25 +91,22 @@ function selectDifficulty(gameDifficulty) {
 
 // add both of these to the actual game function to call these functions as the if statements are included in main game function
 function gamesWon() {
-    if (totalHits = "17") {
+
         alert('You have destroyed all battleships, You WON!')
 	    let score = parseInt(document.getElementById("games-won").innerText);
 
-	    gameWon = document.getElementById("games-won").style.color = Green
-        gameWon.innerText = ++score;
+		document.getElementById("games-won").innerText = ++score;
+		document.getElementById("games-won").style.color = 'green'
         
-    } 
 }
 
 // 
-function gameLost() {
-    if (clicks > 50) {
+function gamesLost() {
         alert('You have launched all Torpedos, Game Over!')
         let score = parseInt(document.getElementById("games-lost").innerText);
 
-	    gameLost = document.getElementById("games-lost").style.color = Red
-        gameLost.innerText = ++score;
-    }
+		document.getElementById("games-lost").innerText = ++score;
+	    score = document.getElementById("games-lost").style.color = 'red'
 }
 
 /* Simple way to know if you have won, is to add up the total amount of hits to destroy all ships on the board
@@ -132,3 +135,42 @@ var gameBoard = [
 
 // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
 gameBoardContainer.addEventListener("click", fireTorpedo, false);
+
+// initial code via http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
+function fireTorpedo(event) {
+    // if item clicked (e.target) is not the parent element on which the event listener was set (e.currentTarget)
+	if (event.target !== event.currentTarget) {
+        // extract row and column # from the HTML element's id
+		var row = event.target.id.substring(1,2);
+		var col = event.target.id.substring(2,3);
+        //alert("Clicked on row " + row + ", col " + col);
+				
+		// if player clicks a square with no ship, change the color and change square's value
+		if (gameBoard[row][col] == 0) {
+			event.target.style.background = '#bbb';
+			// set this square's value to 3 to indicate that they fired and missed
+			gameBoard[row][col] = 3;
+
+			DecrementScore()
+			
+		// if player clicks a square with a ship, change the color and change square's value
+		} else if (gameBoard[row][col] == 1) {
+			event.target.style.background = 'red';
+			// set this square's value to 2 to indicate the ship has been hit
+			gameBoard[row][col] = 2;
+			
+			// increment hitCount each time a ship is hit
+			//++totalHits;
+			//document.getElementById('torpedos-hit').innerText = totalHits
+			IncrementScore()
+
+			// Decrement torpedos launched by 1
+			DecrementScore()	
+
+		// if player clicks a square that's been previously hit, let them know
+		} else if (gameBoard[row][col] > 1) {
+			alert("Stop wasting your torpedos! You already fired at this location.");
+		}
+    event.stopPropagation();
+	}
+}
