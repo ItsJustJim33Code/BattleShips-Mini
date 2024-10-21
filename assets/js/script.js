@@ -27,6 +27,7 @@ for (i = 0; i < cols; i++) {
 	}
 }
 
+// Event listener to handle user clicks when interacting with the game
 document.addEventListener("DOMContentLoaded", function() {
 	let buttons = document.getElementsByTagName("button");
 
@@ -50,6 +51,13 @@ document.addEventListener("DOMContentLoaded", function() {
 var torpedosHit = "0"
 var torpedosLeft = document.getElementById('torpedos-left').innerText
 
+
+// Function that resets the game
+//resetGame() {
+	
+//}
+
+// Function that Increments score for each succesful ship hit
 function IncrementScore() {
 
 	let torpedosHit = parseInt(document.getElementById("torpedos-hit").innerText);
@@ -60,6 +68,7 @@ function IncrementScore() {
 	}
 }
 
+// Function that Decrements score for each torpedo fired except sqaures that have already been fired at
 function DecrementScore() {
 	let torpedosLeft = parseInt(document.getElementById("torpedos-left").innerText);
 	document.getElementById("torpedos-left").innerText = --torpedosLeft;
@@ -69,6 +78,7 @@ function DecrementScore() {
 	}
 }
 
+// Function to set the Game difficulty 
 function selectDifficulty(gameDifficulty) {
 
     if (gameDifficulty === "easy") {
@@ -89,7 +99,7 @@ function selectDifficulty(gameDifficulty) {
 
 
 
-// add both of these to the actual game function to call these functions as the if statements are included in main game function
+// Function to determine when the game is won! 
 function gamesWon() {
 
         alert('You have destroyed all battleships, You WON!')
@@ -100,7 +110,7 @@ function gamesWon() {
         
 }
 
-// 
+// Function to determine when the game is over!
 function gamesLost() {
         alert('You have launched all Torpedos, Game Over!')
         let score = parseInt(document.getElementById("games-lost").innerText);
@@ -136,16 +146,16 @@ var gameBoard = [
 // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
 gameBoardContainer.addEventListener("click", fireTorpedo, false);
 
-// initial code via http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
+// source code from http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
 function fireTorpedo(event) {
-    // if item clicked (e.target) is not the parent element on which the event listener was set (e.currentTarget)
+    // 
 	if (event.target !== event.currentTarget) {
         // extract row and column # from the HTML element's id
 		var row = event.target.id.substring(1,2);
 		var col = event.target.id.substring(2,3);
         //alert("Clicked on row " + row + ", col " + col);
 				
-		// if player clicks a square with no ship, change the color and change square's value
+		// Changes colour of the board to represent hit or miss
 		if (gameBoard[row][col] == 0) {
 			event.target.style.background = '#bbb';
 			// set this square's value to 3 to indicate that they fired and missed
@@ -153,23 +163,21 @@ function fireTorpedo(event) {
 
 			DecrementScore()
 			
-		// if player clicks a square with a ship, change the color and change square's value
+		// Changes colour of the board to represent hit to red
 		} else if (gameBoard[row][col] == 1) {
 			event.target.style.background = 'red';
 			// set this square's value to 2 to indicate the ship has been hit
 			gameBoard[row][col] = 2;
 			
 			// increment hitCount each time a ship is hit
-			//++totalHits;
-			//document.getElementById('torpedos-hit').innerText = totalHits
 			IncrementScore()
 
 			// Decrement torpedos launched by 1
 			DecrementScore()	
 
-		// if player clicks a square that's been previously hit, let them know
+		// Notify player when he has clicked on a previously clicked square
 		} else if (gameBoard[row][col] > 1) {
-			alert("Stop wasting your torpedos! You already fired at this location.");
+			alert("You've already fired at this location, please dont miss again sailor!");
 		}
     event.stopPropagation();
 	}
