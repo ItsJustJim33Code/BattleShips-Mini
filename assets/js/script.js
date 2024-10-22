@@ -81,14 +81,14 @@ function resetGame() {
 	clearBoard();
 	buildGrid();
 
-	const boardRows = 10;
-	const boardCols = 10;
-	const blockLengths = [5, 4, 3, 3, 2]; // Define the sizes of the groups of 1s
+	boardRows = 10;
+	boardCols = 10;
+	blockLengths = [5, 4, 3, 3, 2]; // Define the sizes of the groups of 1s
 
-	const gameBoard = createGameBoard(boardRows, boardCols, blockLengths);
+	gameBoard = createGameBoard(boardRows, boardCols, blockLengths);
 	console.log(gameBoard);
 
-
+	selectDifficulty("easy")
 	document.getElementById('torpedos-hit').innerText = 0
 }
 
@@ -236,11 +236,11 @@ function createGameBoard(rows, cols, blockLengths) {
 }
 
 // Example usage
-const boardRows = 10;
-const boardCols = 10;
-const blockLengths = [5, 4, 3, 3, 2]; // Define the sizes of the groups of 1s
+let boardRows = 10;
+let boardCols = 10;
+let blockLengths = [5, 4, 3, 3, 2]; // Define the sizes of the groups of 1s
 
-const gameBoard = createGameBoard(boardRows, boardCols, blockLengths);
+let gameBoard = createGameBoard(boardRows, boardCols, blockLengths);
 console.log(gameBoard);
 
 // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
