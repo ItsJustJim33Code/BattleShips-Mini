@@ -130,7 +130,7 @@ information back to the user.)
       Frigate          - 2 hits
 */
 
-// Static Gameboard layout * look at randomising this
+/* Static Gameboard layout * look at randomising this
 var gameBoard = [
 	[0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -143,6 +143,56 @@ var gameBoard = [
 	[1, 0, 0, 1, 0, 0, 0, 0, 0, 0],
 	[1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
+
+
+// Creates Gameboard that randomises the where the ships will be placed (ChatGPT for the base code used here with following question "how can i randomise this array while making sure that i have 1s in a row of certain lengths"
+// + static gameboard above + can i define the sizes of the groups of 1s in a variable and assign those to the board and then fill with 0s?")
+*/
+
+function createGameBoard(rows, cols, blockLengths) {
+    const gameBoard = Array.from({ length: rows }, () => Array(cols).fill(0));
+
+    // Helper function to place blocks of 1s
+    function placeBlock(length) {
+        let placed = false;
+        while (!placed) {
+            // Choose a random row
+            const row = Math.floor(Math.random() * rows);
+            // Choose a random starting column
+            const startCol = Math.floor(Math.random() * (cols - length + 1));
+
+            // Check if the block can be placed
+            let canPlace = true;
+            for (let k = 0; k < length; k++) {
+                if (gameBoard[row][startCol + k] === 1) {
+                    canPlace = false;
+                    break;
+                }
+            }
+
+            // Place the block if possible
+            if (canPlace) {
+                for (let k = 0; k < length; k++) {
+                    gameBoard[row][startCol + k] = 1;
+                }
+                placed = true;
+            }
+        }
+    }
+
+    // Place all blocks defined in blockLengths
+    blockLengths.forEach(length => placeBlock(length));
+
+    return gameBoard;
+}
+
+// Example usage
+const boardRows = 10;
+const boardCols = 10;
+const blockLengths = [5, 4, 3, 3, 2]; // Define the sizes of the groups of 1s
+
+const gameBoard = createGameBoard(boardRows, boardCols, blockLengths);
+console.log(gameBoard);
 
 // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
 gameBoardContainer.addEventListener("click", fireTorpedo, false);
