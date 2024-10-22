@@ -153,6 +153,7 @@ function gamesWon() {
 	document.getElementById("games-won").innerText = ++score;
 	document.getElementById("games-won").style.color = 'green'
 
+	resetGame()
 }
 
 /**
@@ -164,6 +165,8 @@ function gamesLost() {
 
 	document.getElementById("games-lost").innerText = ++score;
 	score = document.getElementById("games-lost").style.color = 'red'
+
+	resetGame()
 }
 
 /* Simple way to know if you have won, is to add up the total amount of hits to destroy all ships on the board
