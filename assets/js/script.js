@@ -6,7 +6,9 @@ var squareSize = 50;
 // Get the container element
 var gameBoardContainer = document.getElementById("game-board");
 
-// Function to clear existing squares
+/**
+ * Clears the board of the divs that were created (Used code supplied by ChatGPT using the following question ("how can i make sure that this code belows first removes all the divs it creates and then rebuilds the divs after"))
+ */
 function clearBoard() {
     // Remove all child elements from the container
     while (gameBoardContainer.firstChild) {
@@ -14,7 +16,9 @@ function clearBoard() {
     }
 }
 
-// Function to build the grid
+/**
+ * Function to create the grid squares again using divs 10x10 and creates the game board (Used code supplied by ChatGPT using the following question ("how can i make sure that this code belows first removes all the divs it creates and then rebuilds the divs after"))
+ */
 function buildGrid() {
     // Make the grid columns and rows
     for (let i = 0; i < cols; i++) {
@@ -31,18 +35,15 @@ function buildGrid() {
             var leftPosition = i * squareSize;
 
             // Use CSS absolute positioning to place each grid square on the page
-            square.style.position = 'absolute'; // Ensure proper positioning
             square.style.top = topPosition + 'px';
             square.style.left = leftPosition + 'px';
-            square.style.width = squareSize + 'px';
-            square.style.height = squareSize + 'px';
-            square.style.border = '1px solid black'; // Optional: add border for visibility
         }
     }
 }
 
-// Clear the board and build it again
+// Clears the board on page refresh
 clearBoard();
+// Builds the grid squares of divs to create the game board
 buildGrid();
 
 
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		});
 	}
-	// Select Default Difficulty
+	// Selects Default Difficulty
 	selectDifficulty("easy");
 })
 
@@ -76,8 +77,7 @@ var torpedosLeft = document.getElementById('torpedos-left').innerText
  * Function that resets the game by refreshing the page(However this is not ideal and will be changed to simply reset the board)
  */
 function resetGame() {
-	// Refresh the page
-	//location.reload();
+	// Recreates the game board
 	clearBoard();
 	buildGrid();
 
@@ -88,6 +88,7 @@ function resetGame() {
 	gameBoard = createGameBoard(boardRows, boardCols, blockLengths);
 	console.log(gameBoard);
 
+	// when resetGame() is used it uses the default game mode and sets the html element back to 0
 	selectDifficulty("easy")
 	document.getElementById('torpedos-hit').innerText = 0
 }
@@ -123,7 +124,6 @@ function decrementScore() {
 function selectDifficulty(gameDifficulty) {
 
 	if (gameDifficulty === "easy") {
-		//resetGame();
 		document.getElementById('torpedos-left').innerText = "50"
 	} else if (gameDifficulty === "medium") {
 		resetGame();
