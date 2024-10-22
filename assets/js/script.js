@@ -1,31 +1,49 @@
-// set grid rows and columns and the size of each square
+// Set grid rows and columns and the size of each square
 var rows = 10;
 var cols = 10;
 var squareSize = 50;
 
-// get the container element
+// Get the container element
 var gameBoardContainer = document.getElementById("game-board");
 
-// make the grid columns and rows
-for (i = 0; i < cols; i++) {
-	for (j = 0; j < rows; j++) {
-
-		// create a new div HTML element for each grid square and make it the right size
-		var square = document.createElement("div");
-		gameBoardContainer.appendChild(square);
-
-		// give each div element a unique id based on its row and column, like "s00"
-		square.id = 's' + j + i;
-
-		// set each grid square's coordinates: multiples of the current row or column number
-		var topPosition = j * squareSize;
-		var leftPosition = i * squareSize;
-
-		// use CSS absolute positioning to place each grid square on the page
-		square.style.top = topPosition + 'px';
-		square.style.left = leftPosition + 'px';
-	}
+// Function to clear existing squares
+function clearBoard() {
+    // Remove all child elements from the container
+    while (gameBoardContainer.firstChild) {
+        gameBoardContainer.removeChild(gameBoardContainer.firstChild);
+    }
 }
+
+// Function to build the grid
+function buildGrid() {
+    // Make the grid columns and rows
+    for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+            // Create a new div HTML element for each grid square and make it the right size
+            var square = document.createElement("div");
+            gameBoardContainer.appendChild(square);
+
+            // Give each div element a unique id based on its row and column, like "s00"
+            square.id = 's' + j + i;
+
+            // Set each grid square's coordinates: multiples of the current row or column number
+            var topPosition = j * squareSize;
+            var leftPosition = i * squareSize;
+
+            // Use CSS absolute positioning to place each grid square on the page
+            square.style.position = 'absolute'; // Ensure proper positioning
+            square.style.top = topPosition + 'px';
+            square.style.left = leftPosition + 'px';
+            square.style.width = squareSize + 'px';
+            square.style.height = squareSize + 'px';
+            square.style.border = '1px solid black'; // Optional: add border for visibility
+        }
+    }
+}
+
+// Clear the board and build it again
+clearBoard();
+buildGrid();
 
 
 
@@ -54,13 +72,29 @@ var torpedosHit = "0"
 var torpedosLeft = document.getElementById('torpedos-left').innerText
 
 
-// Function that resets the game
+/**
+ * Function that resets the game by refreshing the page(However this is not ideal and will be changed to simply reset the board)
+ */
 function resetGame() {
 	// Refresh the page
-	location.reload();
+	//location.reload();
+	clearBoard();
+	buildGrid();
+
+	const boardRows = 10;
+	const boardCols = 10;
+	const blockLengths = [5, 4, 3, 3, 2]; // Define the sizes of the groups of 1s
+
+	const gameBoard = createGameBoard(boardRows, boardCols, blockLengths);
+	console.log(gameBoard);
+
+
+	document.getElementById('torpedos-hit').innerText = 0
 }
 
-// Function that Increments score for each succesful ship hit
+/**
+ * Function that Increments score for each succesful ship hit and adds it to torpedosHit Variable
+ */
 function incrementScore() {
 
 	let torpedosHit = parseInt(document.getElementById("torpedos-hit").innerText);
@@ -71,7 +105,9 @@ function incrementScore() {
 	}
 }
 
-// Function that Decrements score for each torpedo fired except sqaures that have already been fired at
+/**
+ * Function that Decrements score for each torpedo fired except sqaures that have already been fired at and decrements it from the torpedosLeft variable
+ */
 function decrementScore() {
 	let torpedosLeft = parseInt(document.getElementById("torpedos-left").innerText);
 	document.getElementById("torpedos-left").innerText = --torpedosLeft;
@@ -81,16 +117,22 @@ function decrementScore() {
 	}
 }
 
-// Function to set the Game difficulty 
+/**
+ * Function to set the Game difficulty and sets how many torpedosLeft for the player to use to win the game
+ */
 function selectDifficulty(gameDifficulty) {
 
 	if (gameDifficulty === "easy") {
+		//resetGame();
 		document.getElementById('torpedos-left').innerText = "50"
 	} else if (gameDifficulty === "medium") {
+		resetGame();
 		document.getElementById('torpedos-left').innerText = "40"
 	} else if (gameDifficulty === "hard") {
+		resetGame();
 		document.getElementById('torpedos-left').innerText = "30"
 	} else if (gameDifficulty === "impossible") {
+		resetGame();
 		document.getElementById('torpedos-left').innerText = "20"
 	} else {
 		alert(`Unknown game type ${gameDifficulty}`);
@@ -100,7 +142,9 @@ function selectDifficulty(gameDifficulty) {
 
 
 
-// Function to determine when the game is won! 
+/**
+ * Function to determine when the game is won! displaying an alert to the user and updating the games-won text in the HTML file
+ */
 function gamesWon() {
 
 	alert('You have destroyed all battleships, You WON!')
@@ -111,7 +155,9 @@ function gamesWon() {
 
 }
 
-// Function to determine when the game is over!
+/**
+ * Function to determine when the game is over! displaying an alert to the user and updating the games-lost text in the HTML file
+ */
 function gamesLost() {
 	alert('You have launched all Torpedos, Game Over!')
 	let score = parseInt(document.getElementById("games-lost").innerText);
@@ -148,7 +194,10 @@ var gameBoard = [
 // Creates Gameboard that randomises the where the ships will be placed (ChatGPT for the base code used here with following question "how can i randomise this array while making sure that i have 1s in a row of certain lengths"
 // + static gameboard above + can i define the sizes of the groups of 1s in a variable and assign those to the board and then fill with 0s?")
 */
-
+/**
+ * Creates an array with randomised groups of 1 of a certain length, adds this to the array and fills the remaining spaces with 0s
+ * @blockLengths variable defines the sizes of the groups of 1s and can be changed when required.
+ */
 function createGameBoard(rows, cols, blockLengths) {
     const gameBoard = Array.from({ length: rows }, () => Array(cols).fill(0));
 
@@ -198,6 +247,10 @@ console.log(gameBoard);
 gameBoardContainer.addEventListener("click", fireTorpedo, false);
 
 // source code from http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
+/**
+ * Main function of that game that records the clicks within the gameboard divs and changes colors of the divs square to represent hits, misses
+ * This function also includes the other functions such as incrementScore(), decrementScore(), gamesWon() and gamesLost()
+ */
 function fireTorpedo(event) {
 	// 
 	if (event.target !== event.currentTarget) {
