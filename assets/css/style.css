@@ -2,7 +2,7 @@
 
 body {
     margin: 60px auto;
-    width: 70%;
+    width: 80%;
     max-width: 950px;
     font-family: "Gruppo", sans-serif;
 }
@@ -42,21 +42,25 @@ button:hover {
 
 
 #game-board {
-	position:relative;
-	margin:0 auto 2em auto;
-	width:500px;
-	height:500px;
+    position: relative;
+    margin: 0 auto 2em auto;
+    width: 500px;
+    height: 500px;
     text-align: center;
-    vertical-align:middle;
+    vertical-align: middle;
     font-size: 2.5em;
 }
 
 
 #game-board div {
-	position:absolute;
-	border: 1px solid red;
-	width:50px;
-	height:50px;
+    position: absolute;
+    border: 1px solid red;
+    width: 50px;
+    height: 50px;
     background-color: rgba(144, 198, 149, 0.5);
 }
 
+/* Mobile screens (471px and up) */
+@media screen and (max-width: 720px) {
+
+}
