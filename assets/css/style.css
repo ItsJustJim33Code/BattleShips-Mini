@@ -7,6 +7,10 @@ body {
     font-family: "Gruppo", sans-serif;
 }
 
+h1 {
+    text-align: center;
+}
+
 #section-background {
     background-image: url("../images/giant-wave.jpg");
     color: whitesmoke;
@@ -55,3 +59,4 @@ button:hover {
 	height:50px;
     background-color: rgba(144, 198, 149, 0.5);
 }
+
