@@ -17,31 +17,31 @@ the features within this website include;
 
 - Landing page
 
-  - `Description` - .
+  - `Description` - Description shows the game name, the requirement to win the game.
 
   <img src="" width="260"/>
 
   <img src="" width="700"/>
 
-  - `Torpedos Hit Counter` - 
+  - `Torpedos Hit Counter` - Shows how many torpedos have actually hit the 'target' / 'Ship' and when the number matches the win requirement it sends an alert to the user letting them know theyve won.
 
   <img src="" width="260"/>
 
   <img src="" width="700"/>
 
-  - `Torpedos Left Counter` - 
+  - `Torpedos Left Counter` - Shows the amount of torpedos you have left to fire depending on the difficulty of the game selected e.g. easy mode = 50, medium mode = 40, hard mode = 30 and impossible mode = 20. Once all torpedos have been fired the game ends, sending an alert to the user letting them know the game is over.
 
     <img src="" width="260"/>
 
   <img src="" width="700"/>
 
-  - `Games Won Counter` - 
+  - `Games Won Counter` - When you have reached the win requirement this counter increases by 1 and changes from black text to green to represent this visually back to the user.
 
   <img src="" width="260"/>
 
   <img src="" width="700"/>
 
-  - `Games Lost Counter` - 
+  - `Games Lost Counter` - when all the torpedos have been fired and the number decreases to 0 indicating game over, this counter increases by 1 and changes text from black to red to represent this visually back to the user.
 
     <img src="" width="260"/>
 
@@ -134,10 +134,10 @@ Another blue button should appear to click: _Open Browser_.
 
 ## References
 
-- 
-- 
-- 
-- 
+- `FireTorpedo Function` - source code from http://www.kirupa.com/html5/handling_events_for_many_elements.htm: + https://github.com/LearnTeachCode/Battleship-JavaScript 
+- `Create Gameboard Function` - ChatGPT using the following questions ("how can i make sure that this code belows first removes all the divs it creates and then rebuilds the divs after" + "how can i randomise this array while making sure that i have 1s in a row of certain lengths" + "static gameboard above + can i define the sizes of the groups of 1s in a variable and assign those to the board and then fill with 0s?")
+- `Create the grid squares within the div via javascript` - https://github.com/LearnTeachCode/Battleship-JavaScript
+- `Increment and Decrement scores and various other code` - Love Maths Walkthrough project via Code Institute
 - 
 - 
 - 

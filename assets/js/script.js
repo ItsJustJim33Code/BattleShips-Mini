@@ -180,7 +180,7 @@ information back to the user.)
       Frigate          - 2 hits
 */
 
-/* Static Gameboard layout * look at randomising this
+/* Static Gameboard layout * leaving code in place as a visual to how the gameboard is created and represented to the console.
 var gameBoard = [
 	[0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -250,7 +250,7 @@ console.log(gameBoard);
 // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
 gameBoardContainer.addEventListener("click", fireTorpedo, false);
 
-// source code from http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
+// source code from http://www.kirupa.com/html5/handling_events_for_many_elements.htm: + https://github.com/LearnTeachCode/Battleship-JavaScript
 /**
  * Main function of that game that records the clicks within the gameboard divs and changes colors of the divs square to represent hits, misses
  * This function also includes the other functions such as incrementScore(), decrementScore(), gamesWon() and gamesLost()
