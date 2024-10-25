@@ -100,7 +100,7 @@ the features within this website include;
 - Current bugs / issues
   - Issue when the difficulty buttons are clicked it enlarges the space in which the background takes up which can be noticeable to the user but currently isnt a seamless 
   transition of different state.
-  - 
+  - Issue on devices smaller than 721px 
 
 ## Usage
 
