@@ -71,7 +71,8 @@ the features within this website include;
     - 
 
 - Challenges
-  - 
+  - When playing the game and pressing the easy button, it doesnt reset the game like the other buttons due as it creates a loop within the function, so i needed to add to the 
+  select difficulty function that when the easy button is pressed, the reset game button is also clicked within javascript.
   - 
   - 
   - 
@@ -97,7 +98,8 @@ the features within this website include;
 ## Bugs / Issues
 
 - Current bugs / issues
-  - 
+  - Issue when the difficulty buttons are clicked it enlarges the space in which the background takes up which can be noticeable to the user but currently isnt a seamless 
+  transition of different state.
   - 
 
 ## Usage

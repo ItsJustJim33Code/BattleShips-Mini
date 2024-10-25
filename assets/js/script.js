@@ -125,6 +125,7 @@ function selectDifficulty(gameDifficulty) {
 
 	if (gameDifficulty === "easy") {
 		document.getElementById('torpedos-left').innerText = "50"
+		document.getElementById('reset').click();
 	} else if (gameDifficulty === "medium") {
 		resetGame();
 		document.getElementById('torpedos-left').innerText = "40"
@@ -264,6 +265,7 @@ function fireTorpedo(event) {
 		// Changes colour of the board to represent hit or miss
 		if (gameBoard[row][col] == 0) {
 			event.target.style.background = '#bbb';
+			event.target.innerText = "X"
 			// set this square's value to 3 to indicate that they fired and missed
 			gameBoard[row][col] = 3;
 
@@ -273,6 +275,7 @@ function fireTorpedo(event) {
 			// Changes colour of the board to represent hit to red
 		} else if (gameBoard[row][col] == 1) {
 			event.target.style.background = 'red';
+			event.target.innerText = "Y"
 			// set this square's value to 2 to indicate the ship has been hit
 			gameBoard[row][col] = 2;
 
