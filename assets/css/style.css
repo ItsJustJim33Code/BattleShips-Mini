@@ -12,7 +12,7 @@ h1 {
 }
 
 #section-background {
-    background-image: url("../images/giant-wave.jpg");
+    background: url("../images/giant-wave.jpg") no-repeat center/cover;
     color: whitesmoke;
     padding-bottom: 7%;
 }
