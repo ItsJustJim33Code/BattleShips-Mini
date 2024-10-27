@@ -104,6 +104,7 @@ the features within this website include;
   - 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
   -	'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
   - 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+  - Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (resetGame, selectDifficulty)
 
 #### Game Page Lighthouse
 
