@@ -46,7 +46,12 @@ clearBoard();
 // Builds the grid squares of divs to create the game board
 buildGrid();
 
-
+// Display and alert to the user when screen size is under 640px
+if (screen.width < 640) {
+    alert('Please use Landscape mode to play the game correctly');
+}
+else {
+}
 
 // Event listener to handle user clicks when interacting with the game
 document.addEventListener("DOMContentLoaded", function () {
@@ -66,7 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	// Selects Default Difficulty
 	selectDifficulty("easy");
 })
-
 
 // Create a score system to show you game info
 var torpedosHit = "0"
@@ -102,7 +106,7 @@ function incrementScore() {
 	document.getElementById("torpedos-hit").innerText = ++torpedosHit;
 
 	if (torpedosHit == 17) {
-		gamesWon()
+		gamesWon();
 	}
 }
 
@@ -114,7 +118,7 @@ function decrementScore() {
 	document.getElementById("torpedos-left").innerText = --torpedosLeft;
 
 	if (torpedosLeft == 0) {
-		gamesLost()
+		gamesLost();
 	}
 }
 

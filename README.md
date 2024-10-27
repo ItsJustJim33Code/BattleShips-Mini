@@ -70,14 +70,15 @@ the features within this website include;
   ## Planned updates / Challenges
 
   - Planned changes
-    - 
-    - 
-    - 
+    - Fix known issues and bugs
+    - Create draggble representations of the ships available and allow rotation to be manually placed within the gameboard.
+    - Add icons / images along with sound effects to the hits and misses for a better UI instead of 'X' and 'Y'
+    - Create a better way to play this game on mobile devices under 721px without requiring landscape mode.
 
 - Challenges
   - When playing the game and pressing the easy button, it doesnt reset the game like the other buttons due as it creates a loop within the function, so i needed to add to the 
   select difficulty function that when the easy button is pressed, the reset game button is also clicked within javascript.
-  - 
+  - Creating a way to have this game fully responsive, however due to the size of the gameboard that needs to be interacted with, if it was full reponsive eventually the gameboard would be too small to click. (currently needs to be played in landscape mode if under 721px width)
   - 
   - 
 
@@ -106,10 +107,10 @@ the features within this website include;
 ## Bugs / Issues
 
 - Current bugs / issues
-  - Issue when the difficulty buttons are clicked it enlarges the space in which the background takes up which can be noticeable to the user but currently isnt a seamless 
-  transition of different state.
   - Issue on devices smaller than 721px due to the gameboard needing to be a certain size 10x10 it was really possible to shrink the board in a way to work in portrit mode on 
   devices under 721px (these devices need to run the game while in landscape.)
+  - Issue when Winning the game, the game resets to easy mode but sets the torpedos left to '49' instead of '50', it resets correctly when resetting the game or when losing the game.
+
 
 ## Usage
 
