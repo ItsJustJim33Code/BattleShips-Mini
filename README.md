@@ -16,6 +16,8 @@ Welcome to Battleships Mini
 This website allows an interactive Battleship mini game to be played on different difficulties with a score of games won and games lost, along with a reset ability to 
 reset the game to the start to try again without refreshing the page.
 
+This game MUST be run on screensizes above 640px.
+
 the features within this website include;
 
 - Landing page
@@ -79,15 +81,16 @@ the features within this website include;
   - When playing the game and pressing the easy button, it doesnt reset the game like the other buttons due as it creates a loop within the function, so i needed to add to the 
   select difficulty function that when the easy button is pressed, the reset game button is also clicked within javascript.
   - Creating a way to have this game fully responsive, however due to the size of the gameboard that needs to be interacted with, if it was full reponsive eventually the gameboard would be too small to click. (currently needs to be played in landscape mode if under 721px width)
-  - 
-  - 
+  - Randomising the gameboard caused issues as it would randomise the board but would allocate the 1s (Ships) all over the array and not keep their length, this was fixed later on with help from chatGPT where i specifiy length of 1s via blockLengths = [5, 4, 3, 3, 2];
+  - Re-creating the gameboard was difficulty with the code i had already written in place, when i tried to simply remove the board and re-create it again, it would actually just rebuild the board on top of the new board creating a layer of divs on top of eachother, any attempts to avoid this with functions would stop the fireTropedo function from being used due to how the variables were used. this was fixed with chatgpt by creating two functions clearBoard() & buildGrid()
 
 ## Testing
 
-- 
-- 
-- 
-- 
+- I have tested this on multiple browsers i.e. browsers; Chrome, Firefox, Edge; and devices and confirmed the game runs as expected with no issues presented to the user
+- I have tested all features of the game including changing difficulty, resetting the game, winning and losing the game and ensured they work as they are expected to.
+- I have tested that when users device is smaller than 640px an alert is sent to the user to change to landscape mode.
+- I have confirmed with user testing that the main features of the page are visble, readable and easy to follow with current website pallete, font sizes and interaction
+- I have confirmed via devtools that the console.log is logging the active gameboard.
 
 ## Validator Testing
 
@@ -95,6 +98,12 @@ the features within this website include;
   - No issues found
 - CSS3 Validator
   - 1 issue present due to using external stylesheet i.e Google Fonts
+- JSHint
+  - No code issues found except advisories such as;
+  -	'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+  - 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+  -	'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+  - 'template literal syntax' is only available in ES6 (use 'esversion: 6').
 
 #### Game Page Lighthouse
 
@@ -153,8 +162,6 @@ Another blue button should appear to click: _Open Browser_.
 - `Create the grid squares within the div via javascript` - https://github.com/LearnTeachCode/Battleship-JavaScript
 - `Increment and Decrement scores and various other code` - Love Maths Walkthrough project via Code Institute
 - `Text Shadow` - https://kinsta.com/blog/css-text-outline
-- 
-- 
 
 ## Contact
 

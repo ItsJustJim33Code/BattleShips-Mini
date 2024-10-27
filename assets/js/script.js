@@ -10,9 +10,9 @@ var gameBoardContainer = document.getElementById("game-board");
  * Clears the board of the divs that were created (Used code supplied by ChatGPT using the following question ("how can i make sure that this code belows first removes all the divs it creates and then rebuilds the divs after"))
  */
 function clearBoard() {
-    // Remove all child elements from the container
+  // Remove all child elements from the container
     while (gameBoardContainer.firstChild) {
-        gameBoardContainer.removeChild(gameBoardContainer.firstChild);
+		gameBoardContainer.removeChild(gameBoardContainer.firstChild);
     }
 }
 
@@ -22,23 +22,23 @@ function clearBoard() {
 function buildGrid() {
     // Make the grid columns and rows
     for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-            // Create a new div HTML element for each grid square and make it the right size
-            var square = document.createElement("div");
-            gameBoardContainer.appendChild(square);
+		for (let j = 0; j < rows; j++) {
+			// Create a new div HTML element for each grid square and make it the right size
+			var square = document.createElement("div");
+			gameBoardContainer.appendChild(square);
 
-            // Give each div element a unique id based on its row and column, like "s00"
-            square.id = 's' + j + i;
+			// Give each div element a unique id based on its row and column, like "s00"
+			square.id = 's' + j + i;
 
-            // Set each grid square's coordinates: multiples of the current row or column number
-            var topPosition = j * squareSize;
-            var leftPosition = i * squareSize;
+			// Set each grid square's coordinates: multiples of the current row or column number
+			var topPosition = j * squareSize;
+			var leftPosition = i * squareSize;
 
-            // Use CSS absolute positioning to place each grid square on the page
-            square.style.top = topPosition + 'px';
-            square.style.left = leftPosition + 'px';
-        }
-    }
+			// Use CSS absolute positioning to place each grid square on the page
+			square.style.top = topPosition + 'px';
+			square.style.left = leftPosition + 'px';
+		}
+	}
 }
 
 // Clears the board on page refresh
@@ -48,10 +48,8 @@ buildGrid();
 
 // Display and alert to the user when screen size is under 640px
 if (screen.width < 640) {
-    alert('Please use Landscape mode to play the game correctly');
-}
-else {
-}
+	alert('Please use Landscape mode to play the game correctly');
+} else {}
 
 // Event listener to handle user clicks when interacting with the game
 document.addEventListener("DOMContentLoaded", function () {
@@ -70,15 +68,10 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 	// Selects Default Difficulty
 	selectDifficulty("easy");
-})
-
-// Create a score system to show you game info
-var torpedosHit = "0"
-var torpedosLeft = document.getElementById('torpedos-left').innerText
-
+});
 
 /**
- * Function that resets the game by refreshing the page(However this is not ideal and will be changed to simply reset the board)
+ * Function that resets the game by refreshing the page(However this is not ideal and will be changed to simply reset the board);
  */
 function resetGame() {
 	// Recreates the game board
@@ -93,8 +86,8 @@ function resetGame() {
 	console.log(gameBoard);
 
 	// when resetGame() is used it uses the default game mode and sets the html element back to 0
-	selectDifficulty("easy")
-	document.getElementById('torpedos-hit').innerText = 0
+	selectDifficulty("easy");
+	document.getElementById('torpedos-hit').innerText = 0;
 }
 
 /**
@@ -129,16 +122,16 @@ function selectDifficulty(gameDifficulty) {
 
 	if (gameDifficulty === "easy") {
 		document.getElementById('reset').click();
-		document.getElementById('torpedos-left').innerText = "50"
+		document.getElementById('torpedos-left').innerText = "50";
 	} else if (gameDifficulty === "medium") {
 		resetGame();
-		document.getElementById('torpedos-left').innerText = "40"
+		document.getElementById('torpedos-left').innerText = "40";
 	} else if (gameDifficulty === "hard") {
 		resetGame();
-		document.getElementById('torpedos-left').innerText = "30"
+		document.getElementById('torpedos-left').innerText = "30";
 	} else if (gameDifficulty === "impossible") {
 		resetGame();
-		document.getElementById('torpedos-left').innerText = "20"
+		document.getElementById('torpedos-left').innerText = "20";
 	} else {
 		alert(`Unknown game type ${gameDifficulty}`);
 		throw `Unknown game type ${gameDifficulty}, aborting!`;
@@ -152,11 +145,11 @@ function selectDifficulty(gameDifficulty) {
  */
 function gamesWon() {
 
-	alert('You have destroyed all battleships, You WON!')
+	alert('You have destroyed all battleships, You WON!');
 	let score = parseInt(document.getElementById("games-won").innerText);
 
 	document.getElementById("games-won").innerText = ++score;
-	score = document.getElementById("games-won").style.color = 'green'
+	score = document.getElementById("games-won").style.color = 'green';
 
 	resetGame();
 }
@@ -165,11 +158,11 @@ function gamesWon() {
  * Function to determine when the game is over! displaying an alert to the user and updating the games-lost text in the HTML file
  */
 function gamesLost() {
-	alert('You have launched all Torpedos, Game Over!')
+	alert('You have launched all Torpedos, Game Over!');
 	let score = parseInt(document.getElementById("games-lost").innerText);
 
 	document.getElementById("games-lost").innerText = ++score;
-	score = document.getElementById("games-lost").style.color = 'red'
+	score = document.getElementById("games-lost").style.color = 'red';
 
 	resetGame();
 }
@@ -207,40 +200,42 @@ var gameBoard = [
  * @blockLengths variable defines the sizes of the groups of 1s and can be changed when required.
  */
 function createGameBoard(rows, cols, blockLengths) {
-    const gameBoard = Array.from({ length: rows }, () => Array(cols).fill(0));
+	const gameBoard = Array.from({
+		length: rows
+	}, () => Array(cols).fill(0));
 
-    // Helper function to place blocks of 1s
-    function placeBlock(length) {
-        let placed = false;
-        while (!placed) {
-            // Choose a random row
-            const row = Math.floor(Math.random() * rows);
-            // Choose a random starting column
-            const startCol = Math.floor(Math.random() * (cols - length + 1));
+	// Helper function to place blocks of 1s
+	function placeBlock(length) {
+		let placed = false;
+		while (!placed) {
+			// Choose a random row
+			const row = Math.floor(Math.random() * rows);
+			// Choose a random starting column
+			const startCol = Math.floor(Math.random() * (cols - length + 1));
 
-            // Check if the block can be placed
-            let canPlace = true;
-            for (let k = 0; k < length; k++) {
-                if (gameBoard[row][startCol + k] === 1) {
-                    canPlace = false;
-                    break;
-                }
-            }
+			// Check if the block can be placed
+			let canPlace = true;
+			for (let k = 0; k < length; k++) {
+				if (gameBoard[row][startCol + k] === 1) {
+					canPlace = false;
+					break;
+				}
+			}
 
-            // Place the block if possible
-            if (canPlace) {
-                for (let k = 0; k < length; k++) {
-                    gameBoard[row][startCol + k] = 1;
-                }
-                placed = true;
-            }
-        }
-    }
+			// Place the block if possible
+			if (canPlace) {
+				for (let k = 0; k < length; k++) {
+					gameBoard[row][startCol + k] = 1;
+				}
+				placed = true;
+			}
+		}
+	}
 
-    // Place all blocks defined in blockLengths
-    blockLengths.forEach(length => placeBlock(length));
+	// Place all blocks defined in blockLengths
+	blockLengths.forEach(length => placeBlock(length));
 
-    return gameBoard;
+	return gameBoard;
 }
 
 // Example usage
@@ -269,29 +264,29 @@ function fireTorpedo(event) {
 		// Changes colour of the board to represent hit or miss
 		if (gameBoard[row][col] == 0) {
 			event.target.style.background = '#bbb';
-			event.target.innerText = "X"
+			event.target.innerText = "X";
 			// set this square's value to 3 to indicate that they fired and missed
 			gameBoard[row][col] = 3;
 
 			// Decrement torpedos launched by 1
-			decrementScore()
+			decrementScore();
 
 			// Changes colour of the board to represent hit to red
 		} else if (gameBoard[row][col] == 1) {
 			event.target.style.background = 'red';
-			event.target.innerText = "Y"
+			event.target.innerText = "Y";
 			// set this square's value to 2 to indicate the ship has been hit
 			gameBoard[row][col] = 2;
 
 			// increment hitCount each time a ship is hit
-			incrementScore()
+			incrementScore();
 
 			// Decrement torpedos launched by 1
-			decrementScore()
+			decrementScore();
 
 			// Notify player when he has clicked on a previously clicked square
 		} else if (gameBoard[row][col] > 1) {
-			alert("You've already fired at this location, please dont miss again sailor!");
+			alert("You've already fired at this location, please dont MISS again Sailor!");
 		}
 	}
 }
