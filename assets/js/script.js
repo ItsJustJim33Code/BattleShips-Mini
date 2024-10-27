@@ -124,8 +124,8 @@ function decrementScore() {
 function selectDifficulty(gameDifficulty) {
 
 	if (gameDifficulty === "easy") {
-		document.getElementById('torpedos-left').innerText = "50"
 		document.getElementById('reset').click();
+		document.getElementById('torpedos-left').innerText = "50"
 	} else if (gameDifficulty === "medium") {
 		resetGame();
 		document.getElementById('torpedos-left').innerText = "40"
@@ -152,9 +152,9 @@ function gamesWon() {
 	let score = parseInt(document.getElementById("games-won").innerText);
 
 	document.getElementById("games-won").innerText = ++score;
-	document.getElementById("games-won").style.color = 'green'
+	score = document.getElementById("games-won").style.color = 'green'
 
-	resetGame()
+	resetGame();
 }
 
 /**
@@ -167,7 +167,7 @@ function gamesLost() {
 	document.getElementById("games-lost").innerText = ++score;
 	score = document.getElementById("games-lost").style.color = 'red'
 
-	resetGame()
+	resetGame();
 }
 
 /* Simple way to know if you have won, is to add up the total amount of hits to destroy all ships on the board

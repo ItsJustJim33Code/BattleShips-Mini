@@ -13,6 +13,7 @@ h1 {
 
 #section-background {
     background: url("../images/giant-wave.jpg") no-repeat center/cover;
+    background-position: 33%;
     padding-bottom: 7%;
 }
 
