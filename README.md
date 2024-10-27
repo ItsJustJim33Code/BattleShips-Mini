@@ -159,7 +159,7 @@ Another blue button should appear to click: _Open Browser_.
 ## References
 
 - `FireTorpedo Function` - source code from http://www.kirupa.com/html5/handling_events_for_many_elements.htm: + https://github.com/LearnTeachCode/Battleship-JavaScript 
-- `Create Gameboard Function` - ChatGPT using the following questions ("how can i make sure that this code belows first removes all the divs it creates and then rebuilds the divs after" + "how can i randomise this array while making sure that i have 1s in a row of certain lengths" + "static gameboard above + can i define the sizes of the groups of 1s in a variable and assign those to the board and then fill with 0s?")
+- `Create Gameboard Function` - ChatGPT using the following questions ("how can i make sure that this code belows first removes all the divs it creates and then rebuilds the divs after" for `clearBoard() + buildGrid()`+ "how can i randomise this array while making sure that i have 1s in a row of certain lengths" + "static gameboard above + can i define the sizes of the groups of 1s in a variable and assign those to the board and then fill with 0s?")
 - `Create the grid squares within the div via javascript` - https://github.com/LearnTeachCode/Battleship-JavaScript
 - `Increment and Decrement scores and various other code` - Love Maths Walkthrough project via Code Institute
 - `Text Shadow` - https://kinsta.com/blog/css-text-outline
